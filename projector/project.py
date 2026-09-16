@@ -3,7 +3,7 @@
 from pathlib import Path
 import subprocess
 
-from file_finder import find_projects
+from .file_finder import find_projects
 # from math_eval import evaluate_math
 
 from rofl.router import RofiRouter

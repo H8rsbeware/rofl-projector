@@ -1,0 +1,2 @@
+[console_scripts]
+projector = projector.project:main

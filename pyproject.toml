@@ -13,4 +13,4 @@ venv = ".venv"
 
 
 [project.scripts]
-projector = "project:main"
+projector = "projector.project:main"

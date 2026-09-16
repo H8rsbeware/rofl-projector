@@ -1,0 +1,9 @@
+pyproject.toml
+projector/file_finder.py
+projector/project.py
+rofl_projector.egg-info/PKG-INFO
+rofl_projector.egg-info/SOURCES.txt
+rofl_projector.egg-info/dependency_links.txt
+rofl_projector.egg-info/entry_points.txt
+rofl_projector.egg-info/requires.txt
+rofl_projector.egg-info/top_level.txt
