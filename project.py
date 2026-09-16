@@ -3,8 +3,8 @@
 from pathlib import Path
 import subprocess
 
-from projector import find_projects
-from math_eval import evaluate_math
+from file_finder import find_projects
+# from math_eval import evaluate_math
 
 from rofl.router import RofiRouter
 from rofl.response import RofiResponse, RofiResponseOptions, RofiRow
@@ -69,45 +69,45 @@ def create_project() -> RofiResponse:
     return rofi
 
 
-def handle_math(expr: str) -> None:
-    try:
-        result = evaluate_math(expr)
-    except (SyntaxError, ValueError, ZeroDivisionError) as exc:
-        response = RofiResponse(
-            rows=[
-                RofiRow(
-                    value="math-error",
-                    display=f"Error: {exc}",
-                    nonselectable=True,
-                    permanent=True,
-                ),
-            ],
-            options=RofiResponseOptions(
-                prompt="Math",
-                keep_filter=True,
-            ),
-        )
-
-        ROUTER.write(response.render())
-        return
-
-    response = RofiResponse(
-        rows=[
-            RofiRow(
-                str(result),
-                display=f"= {result}",
-                info=str(result),
-            ),
-        ],
-        options=RofiResponseOptions(
-            "Maths",
-            keep_filter=True,
-            no_custom=False,
-        ),
-    )
-
-    ROUTER.write(response.render())
-
+# def handle_math(expr: str) -> None:
+#     try:
+#         result = evaluate_math(expr)
+#     except (SyntaxError, ValueError, ZeroDivisionError) as exc:
+#         response = RofiResponse(
+#             rows=[
+#                 RofiRow(
+#                     value="math-error",
+#                     display=f"Error: {exc}",
+#                     nonselectable=True,
+#                     permanent=True,
+#                 ),
+#             ],
+#             options=RofiResponseOptions(
+#                 prompt="Math",
+#                 keep_filter=True,
+#             ),
+#         )
+#
+#         ROUTER.write(response.render())
+#         return
+#
+#     response = RofiResponse(
+#         rows=[
+#             RofiRow(
+#                 str(result),
+#                 display=f"= {result}",
+#                 info=str(result),
+#             ),
+#         ],
+#         options=RofiResponseOptions(
+#             "Maths",
+#             keep_filter=True,
+#             no_custom=False,
+#         ),
+#     )
+#
+#     ROUTER.write(response.render())
+#
 
 @ROUTER.bind(RofiRequestType.SELECTED)
 def handle_selected(request: RofiRequest) -> None:
@@ -134,17 +134,17 @@ def fallback(request: RofiRequest) -> None:
     return
 
 
-@ROUTER.bind(RofiRequestType.CUSTOM_INPUT)
-def handle_custom(request: RofiRequest) -> None:
-    if request.input_text is None:
-        return
-
-    value = request.input_text.strip()
-
-    if value.startswith("m "):
-        handle_math(value[2:])
-        return
-
+# @ROUTER.bind(RofiRequestType.CUSTOM_INPUT)
+# def handle_custom(request: RofiRequest) -> None:
+#     if request.input_text is None:
+#         return
+#
+#     value = request.input_text.strip()
+#
+#     # if value.startswith("m "):
+#     #     handle_math(value[2:])
+#     #     return
+#
 
 if __name__ == "__main__":
     ROUTER.run()

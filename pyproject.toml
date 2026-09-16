@@ -1,3 +1,7 @@
 [tool.basedpyright]
 venvPath = "."
 venv = ".venv"
+
+dependencies = [
+    "rofl @ https://github.com/H8rsbeware/rofl.git"
+]
