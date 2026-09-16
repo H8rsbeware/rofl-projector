@@ -146,5 +146,9 @@ def fallback(request: RofiRequest) -> None:
 #     #     return
 #
 
-if __name__ == "__main__":
+def main():
     ROUTER.run()
+
+
+if __name__ == "__main__":
+    main()
