@@ -1,7 +1,16 @@
+[project]
+name = "rofl-projector"
+version = "0.1.0"
+
+dependencies = [
+    "rofl @ git+https://github.com/H8rsbeware/rofl.git"
+]
+
+
 [tool.basedpyright]
 venvPath = "."
 venv = ".venv"
 
-dependencies = [
-    "rofl @ https://github.com/H8rsbeware/rofl.git"
-]
+
+[project.scripts]
+projector = "project:main"
